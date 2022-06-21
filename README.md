@@ -17,13 +17,13 @@ It's composed by:
   - To be used by Tsugi and Codetest
 
 - A node with Node.js [ 16.13.2 ]
-  - To be used by the [xml-validator](https://github.com/KA226-COVID/xml-evaluator)
+  - To be used by the [xml-validator](https://github.com/JuezLTI/xml-evaluator)
 
 - A node with Node.js [ 16.13.2 ]
-  - To be used by the [feedback-manager](https://github.com/KA226-COVID/feedback-manager)
+  - To be used by the [feedback-manager](https://github.com/JuezLTI/feedback-manager)
 
 - A node with Java [ 11 ] and Node.js [ 16.13.2 ] installed
-  - To be used by the [java-validator](https://github.com/KA226-COVID/java-evaluator)
+  - To be used by the [java-validator](https://github.com/JuezLTI/java-evaluator)
 
 - A node with Nginx [ latest ]
   - To be used as a reverse proxy and act as gateway
@@ -33,7 +33,7 @@ It's composed by:
 Before starting the docker-compose, you must:
 
 - Clone the `.env.example` file to a new file called `.env`
-	- Configure your variables there, like adding a github token with read access to this repositories ([xml-evaluator](https://github.com/KA226-COVID/xml-evaluator), [feedback-manager](https://github.com/KA226-COVID/feedback-manager)) or changing passwords
+	- Configure your variables there, like adding a github token with read access to this repositories ([xml-evaluator](https://github.com/JuezLTI/xml-evaluator), [feedback-manager](https://github.com/JuezLTI/feedback-manager)) or changing passwords
 
 - Run the script provided (windows)<b>(clone-repos.bat)</b>, (linux)<b>(clone-repos.sh)</b> to clone all needed repositories
 
