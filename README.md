@@ -17,16 +17,16 @@ It's composed by:
   - To be used by Tsugi and Codetest
 
 - A node with Node.js [ 16.13.2 ]
-  - To be used by the [xml-validator](https://github.com/KA226-COVID/xml-evaluator)
+  - To be used by the [xml-validator](https://github.com/JuezLTI/xml-evaluator)
 
 - A node with Node.js [ 16.13.2 ]
-  - To be used by the [feedback-manager](https://github.com/KA226-COVID/feedback-manager)
+  - To be used by the [feedback-manager](https://github.com/JuezLTI/feedback-manager)
 
 <br>
 
 Before starting the docker-compose, you must clone the `.env.example` file to a new file called `.env`
 
-And then configure your variables there, like adding a github token with read access to this repositories ([xml-evaluator](https://github.com/KA226-COVID/xml-evaluator), [feedback-manager](https://github.com/KA226-COVID/feedback-manager)) or changing passwords
+And then configure your variables there, like adding a github token with read access to this repositories ([xml-evaluator](https://github.com/JuezLTI/xml-evaluator), [feedback-manager](https://github.com/JuezLTI/feedback-manager)) or changing passwords
 
 After that if you have Docker and docker-compose installed
 

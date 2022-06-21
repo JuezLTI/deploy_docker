@@ -10,7 +10,7 @@ RUN git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "htt
 
 WORKDIR /app
 
-RUN git clone --branch ${FEEDBACK_MANAGER_BRANCH} https://github.com/KA226-COVID/feedback-manager.git
+RUN git clone --branch ${FEEDBACK_MANAGER_BRANCH} https://github.com/JuezLTI/feedback-manager.git
 
 WORKDIR "/app/feedback-manager"
 

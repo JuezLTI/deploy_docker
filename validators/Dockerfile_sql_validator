@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 
-RUN git clone --branch ${SQL_VALIDATOR_BRANCH} https://github.com/KA226-COVID/sql-evaluator.git
+RUN git clone --branch ${SQL_VALIDATOR_BRANCH} https://github.com/JuezLTI/sql-evaluator.git
 
 RUN mkdir -p /app/sql-evaluator/server/public/zip
 

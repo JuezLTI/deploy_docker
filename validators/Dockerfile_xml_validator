@@ -10,7 +10,7 @@ WORKDIR /app
 
 RUN git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 
-RUN git clone --branch ${XML_VALIDATOR_BRANCH} https://github.com/KA226-COVID/xml-evaluator.git
+RUN git clone --branch ${XML_VALIDATOR_BRANCH} https://github.com/JuezLTI/xml-evaluator.git
 
 WORKDIR /app/xml-evaluator/server
 

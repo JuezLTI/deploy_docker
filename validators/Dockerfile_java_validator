@@ -16,7 +16,7 @@ WORKDIR /app
 
 RUN git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 
-RUN git clone --branch ${JAVA_VALIDATOR_BRANCH} https://github.com/KA226-COVID/java-evaluator.git
+RUN git clone --branch ${JAVA_VALIDATOR_BRANCH} https://github.com/JuezLTI/java-evaluator.git
 
 #COPY ./src_volumes/java-evaluator/ /app/java-evaluator/
 
