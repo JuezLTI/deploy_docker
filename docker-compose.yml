@@ -40,13 +40,17 @@ services:
       args:
         TSUGI_BRANCH: ${TSUGI_BRANCH}
         CODETEST_BRANCH: ${CODETEST_BRANCH}
+        TSUGI_SMTP_HOST: ${TSUGI_SMTP_HOST}
+        TSUGI_SMTP_PORT: ${TSUGI_SMTP_PORT}
+        TSUGI_SMTP_STARTTLS: ${TSUGI_SMTP_STARTTLS}
+        TSUGI_SMTP_USER: ${TSUGI_SMTP_USER}
+        TSUGI_SMTP_PASSWORD: ${TSUGI_SMTP_PASSWORD}
     command: bash -c "/var/www/html/tsugi/mod/codetest/init-tsugi.sh"
     stdin_open: true
     tty: true
     volumes:
       - "./tsugi/config_tsugi_docker.php:/var/www/html/tsugi/config.php:rw"
       - "./tsugi/config_codetest_docker.php:/var/www/html/tsugi/mod/codetest/config.php:rw"
-      - "./tsugi/msmtprc:/etc/msmtprc:ro"
       - type: bind
         source: ./pipe/hostpipe
         target: /var/pipe/hostpipe

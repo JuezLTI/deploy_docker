@@ -13,6 +13,25 @@ RUN a2enmod rewrite
 RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN sed -i "s/\(;sendmail_path.*\)/\1\nsendmail_path = \/usr\/bin\/msmtp -t/" "$PHP_INI_DIR/php.ini"
 
+# Configure msmtp to send emails
+ARG TSUGI_SMTP_HOST=${TSUGI_SMTP_HOST}
+ARG TSUGI_SMTP_PORT=${TSUGI_SMTP_PORT}
+ARG TSUGI_SMTP_STARTTLS=${TSUGI_SMTP_STARTTLS}
+ARG TSUGI_SMTP_USER=${TSUGI_SMTP_USER}
+ARG TSUGI_SMTP_PASSWORD=${TSUGI_SMTP_PASSWORD}
+RUN echo "account default" >> /etc/msmtprc
+RUN echo "host ${TSUGI_SMTP_HOST}" >> /etc/msmtprc
+RUN echo "port ${TSUGI_SMTP_PORT}" >> /etc/msmtprc
+RUN echo "tls on" >> /etc/msmtprc
+RUN echo "tls_starttls ${TSUGI_SMTP_STARTTLS}" >> /etc/msmtprc
+RUN echo "tls_trust_file /etc/ssl/certs/ca-certificates.crt" >> /etc/msmtprc
+RUN echo "tls_certcheck on" >> /etc/msmtprc
+RUN echo "auth on" >> /etc/msmtprc
+RUN echo "user ${TSUGI_SMTP_USER}" >> /etc/msmtprc
+RUN echo "password ${TSUGI_SMTP_PASSWORD}" >> /etc/msmtprc
+RUN echo "from ${TSUGI_SMTP_USER}" >> /etc/msmtprc
+RUN echo "logfile /var/log/msmtp.log" >> /etc/msmtprc
+
 
 ENV NODE_VERSION=16.13.2
 ENV NVM_DIR=/root/.nvm
