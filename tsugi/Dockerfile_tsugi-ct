@@ -19,7 +19,7 @@ ARG TSUGI_SMTP_PORT=${TSUGI_SMTP_PORT}
 ARG TSUGI_SMTP_STARTTLS=${TSUGI_SMTP_STARTTLS}
 ARG TSUGI_SMTP_USER=${TSUGI_SMTP_USER}
 ARG TSUGI_SMTP_PASSWORD=${TSUGI_SMTP_PASSWORD}
-RUN echo "account default" >> /etc/msmtprc
+RUN echo "account default" > /etc/msmtprc
 RUN echo "host ${TSUGI_SMTP_HOST}" >> /etc/msmtprc
 RUN echo "port ${TSUGI_SMTP_PORT}" >> /etc/msmtprc
 RUN echo "tls on" >> /etc/msmtprc
