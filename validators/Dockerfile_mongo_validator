@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+RUN npm install -g nodemon
+
+RUN apk add --update --no-cache mongodb-tools git bash
+RUN npm install -g mongosh
+
+WORKDIR /app
+RUN mkdir -p mongo-evaluator/server/public/zip
+
+# RUN git clone --branch ${MONGO_VALIDATOR_BRANCH} https://github.com/JuezLTI/mongo-evaluator.git
+
+COPY ./src_volume/mongo-evaluator/server/package.json /app/mongo-evaluator/server/package.json
+
+WORKDIR /app/mongo-evaluator/server
+
+RUN npm install
+
+EXPOSE 3000
+
+ENTRYPOINT [ "npm", "run", "watch:dev" ]
+

@@ -162,6 +162,33 @@ services:
         FEEDBACK_MANAGER_BRANCH: ${FEEDBACK_MANAGER_BRANCH}
     ports:
       - 3001:3003
+  mongo-validator:
+    container_name: mongo-validator_container
+    image: mongo-validator_img
+    restart: unless-stopped
+    build:
+      context: ./validators/
+      dockerfile: Dockerfile_mongo_validator
+      args:
+        GITHUB_TOKEN: ${GITHUB_TOKEN}
+        NODE_VERSION: ${NODE_VERSION}
+        MONGO_VALIDATOR_BRANCH: ${MONGO_VALIDATOR_BRANCH}
+    environment:
+      FEEDBACK_MANAGER_URL: ${FEEDBACK_MANAGER_URL}
+      BASE_URL: ${SPRING_REQUESTS_BASE_URL}/api
+      PORT: ${NODE_SERVER_PORT}
+      EMAIL: ${SPRING_REQUESTS_EMAIL}
+      PASSWORD: ${SPRING_REQUESTS_PASSWORD}
+      DB_MONGO_PORT: ${DB_MONGO_VALIDATOR_PORT}
+      MONGO_DB_CONTAINER_NAME: ${MONGO_DB_CONTAINER_NAME}
+    volumes:
+      - './validators/src_volume/mongo-evaluator/server/dev-server:/app/mongo-evaluator/server/dev-server'
+    depends_on:
+      - db-validator-mongo
+  db-validator-mongo:
+    container_name: ${MONGO_DB_CONTAINER_NAME}
+    image: mongo
+    restart: always
 #  template-validator:
 #    container_name: template-validator_container
 #    image: template-validator_img
