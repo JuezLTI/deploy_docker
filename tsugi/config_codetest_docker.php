@@ -117,6 +117,10 @@ $CFG->validators = array(
         "name" => "PostgreSQL",
         "baseUrl" => "http://sql-validator:3000/",
     ],
+    "MongoDB" => [
+        "name" => "MongoDB",
+        "baseUrl" => "http://mongo-validator:3000/",
+    ],
     "PHP" => [
         "name" => 'PHP',
         "baseUrl" => "http://java-validator:3000/",
