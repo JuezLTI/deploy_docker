@@ -179,7 +179,7 @@ services:
       PORT: ${NODE_SERVER_PORT}
       EMAIL: ${SPRING_REQUESTS_EMAIL}
       PASSWORD: ${SPRING_REQUESTS_PASSWORD}
-      DB_MONGO_PORT: ${DB_MONGO_VALIDATOR_PORT}
+      MONGO_DB_VALIDATOR_PORT: ${MONGO_DB_VALIDATOR_PORT}
       MONGO_DB_CONTAINER_NAME: ${MONGO_DB_CONTAINER_NAME}
     volumes:
       - './validators/src_volume/mongo-evaluator/server/dev-server:/app/mongo-evaluator/server/dev-server'
