@@ -13,7 +13,7 @@ RUN git clone --branch ${MONGO_VALIDATOR_BRANCH} https://github.com/JuezLTI/mong
 
 RUN mkdir -p /app/mongodb-evaluator/server/public/zip
 
-WORKDIR /app/mongo-evaluator/server
+WORKDIR /app/mongodb-evaluator/server
 
 RUN npm ci
 # RUN npm install
