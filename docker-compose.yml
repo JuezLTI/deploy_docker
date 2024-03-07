@@ -176,12 +176,6 @@ services:
       PASSWORD: ${SPRING_REQUESTS_PASSWORD}
       MONGO_DB_VALIDATOR_PORT: ${MONGO_DB_VALIDATOR_PORT}
       MONGO_DB_CONTAINER_NAME: ${MONGO_DB_CONTAINER_NAME}
-    depends_on:
-      - db-validator-mongo
-  db-validator-mongo:
-    container_name: ${MONGO_DB_CONTAINER_NAME}
-    image: mongo
-    restart: always
 #  template-validator:
 #    container_name: template-validator_container
 #    image: template-validator_img

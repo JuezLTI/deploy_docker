@@ -1,13 +1,25 @@
-FROM node:20-alpine
+FROM node:hydrogen-bullseye-slim
 
 ARG MONGO_VALIDATOR_BRANCH=${MONGO_VALIDATOR_BRANCH}
 
 RUN npm install -g nodemon
 
-RUN apk add --update --no-cache mongodb-tools git bash
-RUN npm install -g mongosh
-
 WORKDIR /app
+
+RUN apt update
+RUN apt-get install -y wget libcurl4
+RUN wget https://downloads.mongodb.com/compass/mongosh-2.1.4-linux-x64.tgz
+RUN tar -zxvf mongosh-2.1.4-linux-x64.tgz
+RUN cp mongosh-2.1.4-linux-x64/bin/mongosh /usr/local/bin
+RUN cp mongosh-2.1.4-linux-x64/bin/mongosh_crypt_v1.so /usr/local/bin
+RUN wget https://repo.mongodb.org/apt/debian/dists/bullseye/mongodb-org/7.0/main/binary-amd64/mongodb-org-server_7.0.6_amd64.deb
+RUN dpkg -i mongodb-org-server_7.0.6_amd64.deb
+
+# Copia el script de entrada de Docker para iniciar MongoDB y luego ejecutar el comando proporcionado
+COPY docker-mongo-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN mkdir -p /app/mongodb
+RUN chmod -R 700 /app/mongodb
 
 RUN git clone --branch ${MONGO_VALIDATOR_BRANCH} https://github.com/JuezLTI/mongodb-evaluator.git
 
@@ -20,4 +32,4 @@ RUN npm ci
 
 EXPOSE 3000
 
-ENTRYPOINT [ "npm", "run", "prod" ]
+ENTRYPOINT [ "docker-entrypoint.sh" ]

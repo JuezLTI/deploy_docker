@@ -1,3 +1,5 @@
 
 .env
 src_volume
+nginx/certs
+central-repository/spring-files
