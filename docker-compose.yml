@@ -183,12 +183,6 @@ services:
       MONGO_DB_CONTAINER_NAME: ${MONGO_DB_CONTAINER_NAME}
     volumes:
       - './validators/src_volume/mongo-evaluator/server/dev-server:/app/mongo-evaluator/server/dev-server'
-    depends_on:
-      - db-validator-mongo
-  db-validator-mongo:
-    container_name: ${MONGO_DB_CONTAINER_NAME}
-    image: mongo
-    restart: always
 #  template-validator:
 #    container_name: template-validator_container
 #    image: template-validator_img
