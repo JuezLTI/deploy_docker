@@ -7,7 +7,7 @@ RUN npm install -g nodemon
 WORKDIR /app
 
 RUN apt update
-RUN apt-get install -y wget libcurl4
+RUN apt-get install -y wget libcurl4 git
 RUN wget https://downloads.mongodb.com/compass/mongosh-2.1.4-linux-x64.tgz
 RUN tar -zxvf mongosh-2.1.4-linux-x64.tgz
 RUN cp mongosh-2.1.4-linux-x64/bin/mongosh /usr/local/bin
