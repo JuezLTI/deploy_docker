@@ -22,5 +22,6 @@ git clone --branch master                             https://github.com/JuezLTI
 git clone --branch master                       https://github.com/JuezLTI/xml-evaluator.git
 git clone --branch master                           https://github.com/JuezLTI/java-evaluator.git
 git clone --branch master                           https://github.com/JuezLTI/sql-evaluator.git
+git clone --branch master                           https://github.com/JuezLTI/mongodb-evaluator.git
 cd ..
 cd ..
