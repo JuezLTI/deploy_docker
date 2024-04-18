@@ -134,6 +134,7 @@ services:
     depends_on:
       - db-validator-postgres
   db-validator-postgres:
+    container_name: ${SQL_EVALUATOR_HOST}
     image: postgres:${SQL_POSTGRES_VERSION}
     restart: always
     environment:
