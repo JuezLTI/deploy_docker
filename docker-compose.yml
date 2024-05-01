@@ -154,6 +154,8 @@ services:
       BASE_URL: ${SPRING_REQUESTS_BASE_URL}/api
       EMAIL: ${SPRING_REQUESTS_EMAIL}
       PASSWORD: ${SPRING_REQUESTS_PASSWORD}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_API_MODEL: ${OPENAI_API_MODEL}
     build:
       context: ./validators/
       dockerfile: Dockerfile_feedback_manager
