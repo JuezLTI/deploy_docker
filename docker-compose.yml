@@ -155,6 +155,8 @@ services:
       BASE_PORT: 3000
       EMAIL: ${CENTRAL_REPOSITORY_USER}
       PASSWORD: ${CENTRAL_REPOSITORY_PASS}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      OPENAI_API_MODEL: ${OPENAI_API_MODEL}
     build:
       context: ./validators/
       dockerfile: Dockerfile_feedback_manager
