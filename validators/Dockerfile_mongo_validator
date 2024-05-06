@@ -23,8 +23,8 @@ RUN mkdir -p mongo-evaluator/server/public/zip
 
 # RUN git clone --branch ${MONGO_VALIDATOR_BRANCH} https://github.com/JuezLTI/mongo-evaluator.git
 
-COPY ./src_volume/mongo-evaluator/server/package.json /app/mongo-evaluator/server/package.json
-COPY ./src_volume/mongo-evaluator/server/package-lock.json /app/mongo-evaluator/server/package-lock.json
+COPY ./src_volume/mongodb-evaluator/server/package.json /app/mongo-evaluator/server/package.json
+COPY ./src_volume/mongodb-evaluator/server/package-lock.json /app/mongo-evaluator/server/package-lock.json
 
 WORKDIR /app/mongo-evaluator/server
 
