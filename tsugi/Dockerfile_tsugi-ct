@@ -60,7 +60,6 @@ RUN cp init-tsugi.sh /var/www/html/tsugi/admin/init-tsugi.sh
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install
-RUN composer update
 
 RUN npm ci
 RUN npm run build
