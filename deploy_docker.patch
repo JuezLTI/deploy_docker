@@ -1,0 +1,15 @@
+diff --git a/docker-compose.yml b/docker-compose.yml
+index fb1d2b7..939f458 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -207,6 +207,10 @@ services:
+       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     volumes:
+       - 'mysql_data_container:/var/lib/mysql:delegated'
++    ulimits:
++      nofile:
++        soft: 65536
++        hard: 65536
+   spring-mongo-db:
+     container_name: spring_mongo_db_container
+     image: 'mongo:4.4.9'

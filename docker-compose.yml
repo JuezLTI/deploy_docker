@@ -207,6 +207,10 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - 'mysql_data_container:/var/lib/mysql:delegated'
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
   spring-mongo-db:
     container_name: spring_mongo_db_container
     image: 'mongo:4.4.9'
