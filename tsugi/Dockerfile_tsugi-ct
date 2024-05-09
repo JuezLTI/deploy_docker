@@ -29,7 +29,7 @@ COPY ./src_volume/codetest/init-tsugi.sh       /var/www/html/tsugi/admin/init-ts
 
 WORKDIR /var/www/html/tsugi/mod/codetest
 
-RUN composer install && composer update
+RUN composer install
 
 RUN mkdir tmp && chmod 777 tmp && cd /tmp && mkdir codetest && chmod 777 codetest
 
