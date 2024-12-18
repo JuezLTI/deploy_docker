@@ -1,9 +1,15 @@
 <?php
+
+// Make this require relative to the parent of the current folder
+// http://stackoverflow.com/exercises/24753758
+
+
 require_once dirname(__DIR__) . "/config.php";
 require 'vendor/autoload.php';
 
 $CFG->codetestRootDir = dirname(__FILE__);
 $CFG->codetestBasePath = __DIR__;
+
 
 $CFG->twig = array(
     'viewsPath' => __DIR__ . "/views",
@@ -47,7 +53,7 @@ $CFG->validators = array(
                 ],
             ]
         ]
-    ],
+            ],
     "Javascript" => [
         "name" => 'Javascript',
         "baseUrl" => "http://java-validator:3000/",
@@ -92,15 +98,57 @@ $CFG->validators = array(
         ]
     ],
 
-    "XML" => [
-        "name" => 'XML',
+    "DTD" => [
+        "name" => 'DTD',
+        "baseUrl" => "http://xml-validator:3000/",
+        "capabilities" => [
+            "id" => "DTD-evaluator",
+            "features" => [
+                [
+                    "name" => "language",
+                    "value" => "dtd",
+                ],
+                [
+                    "name" => "version",
+                    "value" => ".01",
+                ],
+                [
+                    "name" => "engine",
+                    "value" => "https://www.npmjs.com/package/xpath",
+                ],
+            ],
+        ]
+    ],
+    "XPath" => [
+        "name" => 'XPath',
         "baseUrl" => "http://xml-validator:3000/",
         "capabilities" => [
             "id" => "XPath-evaluator",
             "features" => [
                 [
                     "name" => "language",
-                    "value" => "XPath",
+                    "value" => "xpath",
+                ],
+                [
+                    "name" => "version",
+                    "value" => ".01",
+                ],
+                [
+                    "name" => "engine",
+                    "value" => "https://www.npmjs.com/package/xpath",
+                ],
+            ],
+        ]
+    ],
+    "XSD" => [
+        "name" => 'XSD',
+        "baseUrl" => "http://xml-validator:3000/",
+        "capabilities" => [
+            "id" => "XPath-evaluator",
+            "features" => [
+                [
+                    "name" => "language",
+                    "value" => "xsd",
                 ],
                 [
                     "name" => "version",
@@ -141,7 +189,7 @@ $CFG->validators = array(
                 ],
             ]
         ]
-    ]
+    ],
 //  "Template" => [
 //     "name" => 'Template',
 //     "baseUrl" => "http://template-validator:3000/",
@@ -173,16 +221,16 @@ $CFG->apiConfigs = [
 ];
 
 $CFG->ExerciseProperty = array(
-    'name' => 'programming',
-    'class' => \CT\CT_ExerciseCode::class,
+            'name' => 'programming',
+            'class' => \CT\CT_ExerciseCode::class,
     'instructorForm' => 'exercise/forms/exerciseCodeForm.php.twig',
     'studentView' => 'exercise/students/exerciseCodeStudent.php.twig',
-    'timeout' => 5,
-    'codeLanguages' => array(
+            'timeout' => 5,
+            'codeLanguages' => array(
         array('name' => 'Java'),
         // array('name' => 'PHP', 'ext' => 'xml', 'command' => null, 'stdin' => false)
         
-    ),
+            ),
     
 );
 
