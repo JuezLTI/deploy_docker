@@ -98,15 +98,57 @@ $CFG->validators = array(
         ]
     ],
 
-    "XML" => [
-        "name" => 'XML',
+    "DTD" => [
+        "name" => 'DTD',
+        "baseUrl" => "http://xml-validator:3000/",
+        "capabilities" => [
+            "id" => "DTD-evaluator",
+            "features" => [
+                [
+                    "name" => "language",
+                    "value" => "dtd",
+                ],
+                [
+                    "name" => "version",
+                    "value" => ".01",
+                ],
+                [
+                    "name" => "engine",
+                    "value" => "https://www.npmjs.com/package/xpath",
+                ],
+            ],
+        ]
+    ],
+    "XPath" => [
+        "name" => 'XPath',
         "baseUrl" => "http://xml-validator:3000/",
         "capabilities" => [
             "id" => "XPath-evaluator",
             "features" => [
                 [
                     "name" => "language",
-                    "value" => "XPath",
+                    "value" => "xpath",
+                ],
+                [
+                    "name" => "version",
+                    "value" => ".01",
+                ],
+                [
+                    "name" => "engine",
+                    "value" => "https://www.npmjs.com/package/xpath",
+                ],
+            ],
+        ]
+    ],
+    "XSD" => [
+        "name" => 'XSD',
+        "baseUrl" => "http://xml-validator:3000/",
+        "capabilities" => [
+            "id" => "XPath-evaluator",
+            "features" => [
+                [
+                    "name" => "language",
+                    "value" => "xsd",
                 ],
                 [
                     "name" => "version",
