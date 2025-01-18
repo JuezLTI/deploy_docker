@@ -14,10 +14,10 @@ RUN npm ci && npm run build
 # Tsugi stage
 # -------------------------------------------------------------------------
 
-FROM php:7.3.21-apache AS php-setup
+FROM php:8.2-apache AS php-setup
 
 # PHP extensions
-RUN apt-get update && apt-get install -y git netcat libzip-dev zip sendmail && apt-get clean -y
+RUN apt-get update && apt-get install -y git netcat-traditional libzip-dev zip sendmail && apt-get clean -y
 RUN docker-php-ext-install pdo pdo_mysql mysqli zip
 RUN a2enmod rewrite
 # PHP Composer
