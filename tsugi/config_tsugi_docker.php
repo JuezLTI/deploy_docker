@@ -57,9 +57,9 @@ if ( $apphome ) $CFG->apphome = $apphome; // Leave unset if not embedded
 unset($apphome);
 
 //This add a footer for the index from a html file
-$CFG->footer_file="views/footer.html";
+// $CFG->footer_file="views/footer.html";
 // Theme Tsugi to your institutions colors. If not set, default colors will be used.
-$CFG->extra_css = "/tsugi/views/estilo.css";
+// $CFG->extra_css = "/tsugi/views/estilo.css";
 
 // If we have a web socket server, put its URL here
 // Do not add a path here - just the host and port
@@ -131,7 +131,7 @@ $CFG->adminpw = getenv('TSUGI_ADMIN_PASSWORD');
 
 // Theme Tsugi to your institutions colors. If not set, default colors will be used.
 $CFG->theme = array(
-    "primary" => "linear-gradient(to right, #05A1E6, #A274C1);", //default color for nav background, splash background, buttons, text of tool menu
+    "primary" => "#0D47A1", //default color for nav background, splash background, buttons, text of tool menu
     "secondary" => "#EEEEEE", // Nav text and nav item border color, background of tool menu
     "text" => "#111111", // Standard copy color
     "text-light" => "#5E5E5E", // A lighter version of the standard text color for elements like "small"

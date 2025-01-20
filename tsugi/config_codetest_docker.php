@@ -7,24 +7,27 @@
 require_once dirname(__DIR__) . "/config.php";
 require 'vendor/autoload.php';
 
-$CFG->codetestRootDir = dirname(__FILE__);
-$CFG->codetestBasePath = __DIR__;
+global $CFG;
+$CFG_CT = new CT\CT_ConfigInfo($CFG->dirroot, $CFG->wwwroot, $CFG->dataroot=false);
+$CFG_CT->dbprefix = $CFG->dbprefix;
+$CFG_CT->codetestRootDir = dirname(__FILE__);
+$CFG_CT->codetestBasePath = __DIR__;
 
 
-$CFG->twig = array(
+$CFG_CT->twig = array(
     'viewsPath' => __DIR__ . "/views",
     'debug' => true,
     'cachePath' => __DIR__ . "/tmp",
 );
 
-$CFG->CT_log = array(
+$CFG_CT->CT_log = array(
     'debug' => true,
     'filePath' => __DIR__ . "/tmp/ctLog.log",
 );
 
-$CFG->repositoryUrl = getenv('SPRING_CODETEST_URL').":".getenv('SPRING_CODETEST_PORT');
+$CFG_CT->repositoryUrl = getenv('SPRING_CODETEST_URL').":".getenv('SPRING_CODETEST_PORT');
 
-$CFG->type = [
+$CFG_CT->type = [
     "PHP" => "PHP",
     "SQL" => "SQL",
     "Python" => "Python",
@@ -32,7 +35,7 @@ $CFG->type = [
 ];
 
 
-$CFG->validators = array(
+$CFG_CT->validators = array(
     "Java" => [
         "name" => 'Java',
         "baseUrl" => "http://java-validator:3000/",
@@ -205,10 +208,10 @@ $CFG->validators = array(
 //  ],
 );
 
-$CFG->apiConfigs = [
+$CFG_CT->apiConfigs = [
     "spring-repo" => [
         // MUST HAVE A TRAILING SLASH
-        "baseUrl" => "http://{$CFG->repositoryUrl}/",
+        "baseUrl" => "http://{$CFG_CT->repositoryUrl}/",
         "user" => getenv('CENTRAL_REPOSITORY_USER'),
         "pass" => getenv('CENTRAL_REPOSITORY_PASS'),
     ],
@@ -220,7 +223,7 @@ $CFG->apiConfigs = [
     ],
 ];
 
-$CFG->ExerciseProperty = array(
+$CFG_CT->ExerciseProperty = array(
             'name' => 'programming',
             'class' => \CT\CT_ExerciseCode::class,
     'instructorForm' => 'exercise/forms/exerciseCodeForm.php.twig',
@@ -234,7 +237,7 @@ $CFG->ExerciseProperty = array(
     
 );
 
-$CFG->difficulty = array(
+$CFG_CT->difficulty = array(
     "Easy" => "Easy",
     "medium" => "Medium",
     "Hard" => "Hard"
