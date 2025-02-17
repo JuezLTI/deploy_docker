@@ -5,8 +5,8 @@ ARG CODETEST_BRANCH=${CODETEST_BRANCH}
 
 WORKDIR /git-clones
 
-RUN apt-get update && apt-get install -y git netcat-traditional libzip-dev zip  msmtp mailutils && apt-get clean -y
-RUN docker-php-ext-install pdo pdo_mysql mysqli zip
+RUN apt-get update && apt-get install -y git netcat-traditional libzip-dev zip  msmtp mailutils libpng-dev && apt-get clean -y
+RUN docker-php-ext-install pdo pdo_mysql mysqli zip gd
 RUN a2enmod rewrite
 
 
