@@ -1,21 +1,27 @@
-FROM openjdk:11-jdk
+FROM eclipse-temurin:21-jdk-jammy
+
 ARG JAVA_VALIDATOR_BRANCH=${JAVA_VALIDATOR_BRANCH}
 ARG NODE_VERSION=${NODE_VERSION}
 
-RUN apt-get update && apt-get install -y git curl php
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    python3 \
+    php \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV NVM_DIR=/root/.nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
-RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash \
+    && . "$NVM_DIR/nvm.sh" \
+    && nvm install ${NODE_VERSION} \
+    && nvm use ${NODE_VERSION} \
+    && nvm alias default ${NODE_VERSION}
+
 ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 
 WORKDIR /app
 
 RUN git clone --branch ${JAVA_VALIDATOR_BRANCH} https://github.com/JuezLTI/java-evaluator.git
-
-#COPY ./src_volumes/java-evaluator/ /app/java-evaluator/
 
 WORKDIR /app/java-evaluator/server
 
