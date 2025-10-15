@@ -1,5 +1,10 @@
-FROM node:16.13.2
+FROM node:24-alpine3.21
 ARG SQL_VALIDATOR_BRANCH=${SQL_VALIDATOR_BRANCH}
+
+RUN apk update && apk add \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g nodemon
 
