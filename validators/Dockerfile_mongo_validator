@@ -1,4 +1,4 @@
-FROM node:hydrogen-bullseye-slim
+FROM node:24
 
 ARG MONGO_VALIDATOR_BRANCH=${MONGO_VALIDATOR_BRANCH}
 
@@ -6,14 +6,15 @@ RUN npm install -g nodemon
 
 WORKDIR /app
 
-RUN apt update
-RUN apt-get install -y wget libcurl4 git
-RUN wget https://downloads.mongodb.com/compass/mongosh-2.1.4-linux-x64.tgz
-RUN tar -zxvf mongosh-2.1.4-linux-x64.tgz
-RUN cp mongosh-2.1.4-linux-x64/bin/mongosh /usr/local/bin
-RUN cp mongosh-2.1.4-linux-x64/bin/mongosh_crypt_v1.so /usr/local/bin
-RUN wget https://repo.mongodb.org/apt/debian/dists/bullseye/mongodb-org/7.0/main/binary-amd64/mongodb-org-server_7.0.6_amd64.deb
-RUN dpkg -i mongodb-org-server_7.0.6_amd64.deb
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    git
+
+RUN wget https://downloads.mongodb.com/compass/mongodb-mongosh_2.5.8_amd64.deb
+RUN dpkg -i mongodb-mongosh_2.5.8_amd64.deb
+RUN wget https://repo.mongodb.org/apt/debian/dists/bookworm/mongodb-org/8.2/main/binary-amd64/mongodb-org-server_8.2.1_amd64.deb
+RUN dpkg -i mongodb-org-server_8.2.1_amd64.deb
 
 # Copia el script de entrada de Docker para iniciar MongoDB y luego ejecutar el comando proporcionado
 COPY docker-mongo-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
