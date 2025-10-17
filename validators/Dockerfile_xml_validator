@@ -1,9 +1,7 @@
-FROM node:16.13.2
+FROM node:24-alpine3.21
 ARG XML_VALIDATOR_BRANCH=${XML_VALIDATOR_BRANCH}
 
-RUN apt-get update
-
-RUN apt-get install -y git
+RUN apk update && apk add git 
 
 WORKDIR /app
 
