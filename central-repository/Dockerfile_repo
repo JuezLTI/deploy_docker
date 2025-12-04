@@ -1,9 +1,9 @@
-FROM eclipse-temurin:21-jdk-jammy
+ FROM amazoncorretto:8-alpine-jdk
 ARG REPO_BRANCH=${REPO_BRANCH}
 
-RUN apt-get update
+RUN apk update
 
-RUN apt-get install -y git
+RUN apk add git
 
 WORKDIR /app
 
