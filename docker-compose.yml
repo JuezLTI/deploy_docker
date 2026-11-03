@@ -73,7 +73,12 @@ services:
     depends_on:
       - spring-mongo-db
     volumes:
-      - './central-repository/application.properties:/app/questions-storage/src/main/resources/application.properties:rw'
+      - type: bind
+        source: ./central-repository/application.properties
+        target: /app/questions-storage/src/main/resources/application.properties
+        read_only: true
+        bind:
+          create_host_path: false
       - 'spring-files:/codetest'
   xml-validator:
     container_name: xml-validator_container
